@@ -1,0 +1,7 @@
+export const API_PATH = () => {
+    return {
+      card: {
+        getAll: "v2/pokemon",
+      },
+    }
+}

@@ -10,6 +10,21 @@
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+
+  --color-primary: #E6AB09;
+  --color-secondary: #FFD86C;
+  --color-pokemon: #FFCB3B;
+
+  --color-primary-50: #FFF7DF;
+  --color-primary-100: #FCEEC5;
+  --color-primary-200: #F9E4AA;
+  --color-primary-300: #F3D174;
+  --color-primary-400: #EDBE3F;
+  --color-primary-500: #E6AB09;
+  --color-primary-600: #CD9807;
+  --color-primary-700: #B38405;
+  --color-primary-800: #997103;
+  --color-primary-900: #7F5D00;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -19,8 +34,8 @@
   }
 }
 
-body {
+/* body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
-}
+} */
