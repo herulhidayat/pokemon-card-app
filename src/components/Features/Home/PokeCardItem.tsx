@@ -1,5 +1,5 @@
+import { typeColorReferences } from "@/components/Config/color.config";
 import { lightenHexColor } from "@/components/helper/hexcolor.helper";
-import { API_PATH } from "@/services/_path.service";
 import api from "@/services/api.service";
 import { Skeleton } from "@mui/material";
 import { useQuery } from "@tanstack/react-query";
@@ -12,7 +12,6 @@ interface IPokeCardItemProps {
 
 export default function PokeCardItem({ data }: IPokeCardItemProps) {
   const boundingRef = useRef<DOMRect | null>(null);
-  console.log(data);
   const getDataCard = useQuery({
     queryKey: [data?.url],
     queryFn: async () => {
@@ -117,27 +116,3 @@ export default function PokeCardItem({ data }: IPokeCardItemProps) {
     </div>
   );
 }
-
-const typeColorReferences = [
-  { name: "normal", color: "#A8A77A" },
-  { name: "fighting", color: "#C22E28" },
-  { name: "flying", color: "#A98FF3" },
-  { name: "poison", color: "#A33EA1" },
-  { name: "ground", color: "#E2BF65" },
-  { name: "rock", color: "#B6A136" },
-  { name: "bug", color: "#A6B91A" },
-  { name: "ghost", color: "#735797" },
-  { name: "steel", color: "#B7B7CE" },
-  { name: "fire", color: "#EE8130" },
-  { name: "water", color: "#6390F0" },
-  { name: "grass", color: "#7AC74C" },
-  { name: "electric", color: "#F7D02C" },
-  { name: "psychic", color: "#F95587" },
-  { name: "ice", color: "#96D9D6" },
-  { name: "dragon", color: "#6F35FC" },
-  { name: "dark", color: "#705746" },
-  { name: "fairy", color: "#D685AD" },
-  { name: "stellar", color: "#4464A1" },
-  { name: "unknown", color: "#68A090" },
-  { name: "shadow", color: "#3B3B3B" },
-];

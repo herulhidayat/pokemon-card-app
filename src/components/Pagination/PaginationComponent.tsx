@@ -1,25 +1,24 @@
 import { Pagination } from "@mui/material";
 import SelectStatic from "../Form/SelectStatic";
+import { OPTIONS_SELECT_PAGINATION_9 } from "../Config/options.config";
 
 interface IPaginationProps {
     itemsPerPage: number;
     totalData: number;
+    oprionsSelect?: {key: string, value: string}[]
     callbackSelectedPageNumber: (v: any) => void
     callbackPagination: (v: any) => void
+    color?: string;
 }
-export default function PaginationComponent({ itemsPerPage, totalData, callbackSelectedPageNumber, callbackPagination }: IPaginationProps) {
+export default function PaginationComponent({ itemsPerPage, totalData, oprionsSelect = OPTIONS_SELECT_PAGINATION_9, callbackSelectedPageNumber, callbackPagination, color = "var(--color-white)" }: IPaginationProps) {
   return (
     <div className="flex justify-between">
-      <div className="flex gap-3 text-white items-center">
+      <div className="flex gap-3 items-center" style={{ color: color }}>
         Per Page:
         <SelectStatic
           placeholder="Select Number of Cards"
           deafultValue={itemsPerPage.toString()}
-          configData={[
-            { key: "9", value: "9" },
-            { key: "18", value: "18" },
-            { key: "27", value: "27" },
-          ]}
+          configData={oprionsSelect}
           callbackSelected={callbackSelectedPageNumber}
           style={{
             "& .MuiSelect-select": {
@@ -30,13 +29,13 @@ export default function PaginationComponent({ itemsPerPage, totalData, callbackS
               display: "flex",
               alignItems: "center",
               border: "none",
-              color: "var(--color-white)",
+              color: color,
             },
             "& .MuiOutlinedInput-notchedOutline": {
-              border: "1px solid var(--color-white)",
+              border: `1px solid ${color}`,
             },
             "& .MuiSvgIcon-root": {
-              color: "var(--color-white)",
+              color: color,
             },
           }}
         />
@@ -46,6 +45,21 @@ export default function PaginationComponent({ itemsPerPage, totalData, callbackS
         variant="outlined"
         shape="rounded"
         onChange={(e, page) => callbackPagination(page)}
+        sx={{
+          [`& .MuiPaginationItem-root`]: {
+            color: color,
+            borderColor: color,
+          },
+          [`& .Mui-selected`]: {
+            color: color === "var(--color-white)" ? 'var(--color-primary) !important' : '#ffffff !important',
+            backgroundColor: color,
+          },
+          [`& .Mui-selected:hover`]: {
+            color: color === "var(--color-white)" ? 'var(--color-primary) !important' : '#ffffff !important',
+            backgroundColor: color,
+          },
+
+        }}
       />
     </div>
   );
