@@ -8,6 +8,7 @@ import { QueryClient, QueryClientProvider, useQuery } from "@tanstack/react-quer
 import { useState } from "react";
 import PokeCardItem from "./PokeCardItem";
 import NoData from "@/components/Error/NoData";
+import PaginationComponent from "@/components/Pagination/PaginationComponent";
 
 const queryClient = new QueryClient();
 
@@ -73,40 +74,12 @@ function PokeCardList() {
         }
         <Grid size={12}>
           {Boolean(pagination?.count) && (
-            <div className="flex justify-between">
-              <div className="flex gap-3 text-white items-center">
-                Per Page:
-                <SelectStatic
-                  placeholder="Select Number of Cards"
-                  deafultValue={pagination.itemsPerPage.toString()}
-                  configData={[
-                    { key: "9", value: "9" },
-                    { key: "18", value: "18" },
-                    { key: "27", value: "27" },
-                  ]}
-                  callbackSelected={(value) => setPagination((prev) => ({ ...prev, itemsPerPage: parseInt(value?.value), currentPage: 1, count: 0 }))}
-                  style={{
-                    '& .MuiSelect-select': {
-                      paddingTop: '0px',
-                      paddingRight: '32px !important',
-                      paddingBottom: '0px',
-                      height: '32px',
-                      display: 'flex',
-                      alignItems: 'center',
-                      border: 'none',
-                      color: 'var(--color-white)'
-                    },
-                    '& .MuiOutlinedInput-notchedOutline': {
-                      border: '1px solid var(--color-white)'
-                    },
-                    '& .MuiSvgIcon-root': {
-                      color: 'var(--color-white)'
-                    }
-                  }}
-                />
-              </div>
-              <Pagination count={Math.floor(pagination.count/pagination.itemsPerPage)} variant="outlined" shape="rounded" onChange={(e, page) => setPagination((prev) => ({ ...prev, currentPage: page }))}/>
-            </div>
+            <PaginationComponent
+                totalData={pagination.count}
+                itemsPerPage={pagination.itemsPerPage}
+                callbackPagination={(page) => setPagination((prev) => ({ ...prev, currentPage: page }))}
+                callbackSelectedPageNumber={(value) => setPagination((prev) => ({ ...prev, itemsPerPage: parseInt(value?.value), currentPage: 1, count: 0 }))}
+            />
           )}
         </Grid>
       </Grid>
