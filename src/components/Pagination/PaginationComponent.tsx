@@ -50,11 +50,11 @@ export default function PaginationComponent({ itemsPerPage, totalData, oprionsSe
             color: color,
             borderColor: color,
           },
-          [`& .Mui-selected`]: {
+          [`& .MuiPaginationItem-root.Mui-selected`]: {
             color: color === "var(--color-white)" ? 'var(--color-primary) !important' : '#ffffff !important',
             backgroundColor: color,
           },
-          [`& .Mui-selected:hover`]: {
+          [`& .MuiPaginationItem-root.Mui-selected:hover`]: {
             color: color === "var(--color-white)" ? 'var(--color-primary) !important' : '#ffffff !important',
             backgroundColor: color,
           },

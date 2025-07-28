@@ -1,0 +1,88 @@
+import api from "@/services/api.service";
+import { ArrowForward } from "@mui/icons-material";
+import { useQuery } from "@tanstack/react-query";
+import { useRouter } from "next/router";
+import { useState } from "react";
+import PokeEvolutionImage from "./PokeEvolutionImage";
+
+export default function PokeEvolution({ speciesUrl }: any) {
+  const [evolution, setEvolution] = useState<any>();
+  const router = useRouter();
+
+  useQuery({
+    queryKey: [speciesUrl],
+    queryFn: async () => {
+      const response = await api.get(
+        speciesUrl
+      );
+
+      if(response?.data?.evolution_chain?.url) {
+        const responseEvolution = await api.get(
+          response?.data?.evolution_chain?.url
+        );
+        
+        setEvolution(getEvolutionChain(responseEvolution?.data?.chain))
+        return responseEvolution?.data
+      }
+
+      return response.data;
+    },
+  });
+  
+  return (
+    <>
+      {evolution && evolution?.map((item: any, index: number) => (
+        <div className="flex flex-row gap-6 justify-center items-start">
+          <div className="flex flex-col gap-3 cursor-pointer" key={index} onClick={() => router.push(`/detail?id=${item?.name}`)}>
+            <div className="w-[200px] h-[200px] rounded-full border-8 flex justify-center items-center" style={{borderColor: colorEvo[index]}}>
+              <PokeEvolutionImage name={item?.name} />
+            </div>
+            <div className="w-full text-center capitalize text-xl font-bold text-gray-700">
+              <p>
+                Pokemon Evolution
+              </p>
+              <p>
+                {item?.name}
+              </p>
+            </div>
+          </div>
+          <div className="mt-17">
+            {index < evolution?.length - 1 && (
+              <ArrowForward sx={{ fontSize: "4rem", color: "var(--color-gray-700)"}}/>
+            )}
+          </div>
+        </div>
+      ))} 
+    </>
+  );
+}
+
+const  getEvolutionChain = (chain: any) => {
+  const evolutionList: any = [];
+
+  const traverse = (node:any) => {
+    if (!node) return;
+    evolutionList.push({
+      name: node?.species?.name,
+      url: node?.species?.url,
+      evolves_to: node?.evolves_to?.length > 0,
+      details: node?.evolution_details || [],
+    });
+
+    if (node?.evolves_to && node?.evolves_to.length > 0) {
+      for (const evolution of node?.evolves_to) {
+        traverse(evolution);
+      }
+    }
+  }
+
+  traverse(chain);
+  return evolutionList;
+}
+
+const colorEvo = [
+  '#01B956',
+  '#E6AB09',
+  '#E66D00',
+  '#DE2C2C',
+]

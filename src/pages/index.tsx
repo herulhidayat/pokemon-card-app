@@ -14,7 +14,7 @@ export default function Home() {
       <section id="poke-dex" className="relative overflow-x-hidden py-20" style={{ background: "var(--color-pokemon)"}}>
         <div className="absolute w-[560px] h-[280px] -left-[280px] top-0 rounded-b-full border-[100px] border-secondary border-t-0"></div>
         <div className="absolute w-[560px] h-[280px] -right-[280px] bottom-0 rounded-t-full border-[100px] border-secondary border-b-0"></div>
-        <Container sx={{ height: "100%", position: "relative", zIndex: 1}}>
+        <Container sx={{ minHeight: "1799px", position: "relative", zIndex: 1}}>
           <PokeCardListFeature />
         </Container>
       </section>
