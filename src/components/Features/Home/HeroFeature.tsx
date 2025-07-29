@@ -1,7 +1,11 @@
+"use client";
+
 import { Button, Typography } from "@mui/material";
 import Image from "next/image";
+import { useTranslation } from "react-i18next";
 
 export default function HeroFeature() {
+  const { t } = useTranslation()
   return (
     <div className="flex h-full">
       <div className="w-1/2 flex flex-col justify-center">
@@ -14,7 +18,7 @@ export default function HeroFeature() {
             marginBottom: "1rem",
           }}
         >
-          {'All the Pokémon data you\'ll ever need in one place!'}
+          {t(`All the Pokémon data you'll ever need in one place!`)}
         </Typography>
         <Typography
           variant="h3"
@@ -25,7 +29,7 @@ export default function HeroFeature() {
             marginBottom: "2.133rem",
           }}
         >
-          Thousands of data compiled into one place
+          {t("Thousands of data compiled into one place")}
         </Typography>
         <div>
           <Button
@@ -55,7 +59,7 @@ export default function HeroFeature() {
               }
             }}
           >
-            Check PokèDex
+            {t("Check PokèDex")}
           </Button>
         </div>
       </div>

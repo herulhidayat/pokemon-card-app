@@ -5,6 +5,7 @@ import { AppCacheProvider } from "@mui/material-nextjs/v13-pagesRouter";
 import type { AppProps } from "next/app";
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import { Poppins } from 'next/font/google';
+import '../locales/i18n';
 
 const poppins = Poppins({
   weight: ['300', '400', '500', '700'],

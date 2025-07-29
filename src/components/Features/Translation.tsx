@@ -1,9 +1,17 @@
+"use client";
+
 import { Container } from "@mui/material";
 import SelectStatic from "../Form/SelectStatic";
 import GlobeIcon from "../Icons/GlobeIcon";
 import DropDownIcon from "../Icons/DropDownIcon";
+import { useTranslation } from "react-i18next";
 
 export default function Translation() {
+    const { i18n } = useTranslation();
+
+    const changeLang = (lng: string) => {
+        i18n.changeLanguage(lng);
+    };
     const languages = [
         { key: 'English', value: 'en' },
         { key: 'Indonesia', value: 'id' },
@@ -15,9 +23,9 @@ export default function Translation() {
                     <div className="flex justify-end">
                         <SelectStatic
                             placeholder="Select Language"
-                            deafultValue={languages[0].value}
+                            deafultValue={i18n.language}
                             configData={languages}
-                            callbackSelected={(value) => console.log(value)}
+                            callbackSelected={(value) => changeLang(value.value)}
                             style={{
                                 '& .MuiSelect-select': {
                                     paddingTop: '0px',

@@ -7,12 +7,14 @@ import { useQuery } from "@tanstack/react-query";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import { useRef, useState } from "react";
+import { useTranslation } from "react-i18next";
 
 interface IPokeCardItemProps {
   data: any;
 }
 
 export default function PokeCardItem({ data }: IPokeCardItemProps) {
+  const { t } = useTranslation();
   const boundingRef = useRef<DOMRect | null>(null);
   const [modal, setModal] = useState<boolean>(false);
   const router = useRouter();
@@ -162,19 +164,19 @@ export default function PokeCardItem({ data }: IPokeCardItemProps) {
               <Grid container spacing={2} sx={{ maxWidth: "400px"}}>
                 <Grid size={6}>
                   <div className="flex gap-3">
-                    <p className="text-gray-700 text-xl font-bold">Weight:</p>
+                    <p className="text-gray-700 text-xl font-bold">{t("Weight")}:</p>
                     <p className="text-gray-700 text-xl">{getDataCard?.data?.weight}</p>
                   </div>
                 </Grid>
                 <Grid size={6}>
                   <div className="flex gap-3">
-                    <p className="text-gray-700 text-xl font-bold">Height:</p>
+                    <p className="text-gray-700 text-xl font-bold">{t("Height")}:</p>
                     <p className="text-gray-700 text-xl">{getDataCard?.data?.height}</p>
                   </div>
                 </Grid>
                 <Grid size={12}>
                   <div className="flex gap-8 justify-start">
-                    <p className="text-gray-700 text-xl font-bold">Abilities:</p>
+                    <p className="text-gray-700 text-xl font-bold">{t("Abilities")}:</p>
                     <ul className="text-gray-700 text-xl list-disc">
                       {getDataCard?.data?.abilities?.map((item: any, index: number) => (
                         <li key={index}>
@@ -186,7 +188,7 @@ export default function PokeCardItem({ data }: IPokeCardItemProps) {
                 </Grid>
                 <Grid size={12}>
                   <div className="flex gap-3">
-                    <p className="text-gray-700 text-xl font-bold">Type:</p>
+                    <p className="text-gray-700 text-xl font-bold">{t("Type")}:</p>
                     <div className="flex justify-center items-center h-full gap-3">
                       {getDataCard?.data?.types?.map((item: any, index: number) => {
                         return (
@@ -243,7 +245,7 @@ export default function PokeCardItem({ data }: IPokeCardItemProps) {
                   setModal(false);
                 }}
               >
-                More Detail
+                {t("More Detail")}
               </Button>
             </div>
           </div>

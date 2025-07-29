@@ -4,8 +4,10 @@ import { useQuery } from "@tanstack/react-query";
 import { useRouter } from "next/router";
 import { useState } from "react";
 import PokeEvolutionImage from "./PokeEvolutionImage";
+import { useTranslation } from "react-i18next";
 
 export default function PokeEvolution({ speciesUrl }: any) {
+  const { t } = useTranslation();
   const [evolution, setEvolution] = useState<any>();
   const router = useRouter();
 
@@ -39,7 +41,7 @@ export default function PokeEvolution({ speciesUrl }: any) {
             </div>
             <div className="w-full text-center capitalize text-xl font-bold text-gray-700">
               <p>
-                Pokemon Evolution
+                {t("Pokemon Evolution")}
               </p>
               <p>
                 {item?.name}

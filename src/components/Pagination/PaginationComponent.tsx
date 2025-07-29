@@ -1,6 +1,7 @@
 import { Pagination } from "@mui/material";
 import SelectStatic from "../Form/SelectStatic";
 import { OPTIONS_SELECT_PAGINATION_9 } from "../Config/options.config";
+import { useTranslation } from "react-i18next";
 
 interface IPaginationProps {
     itemsPerPage: number;
@@ -11,10 +12,11 @@ interface IPaginationProps {
     color?: string;
 }
 export default function PaginationComponent({ itemsPerPage, totalData, oprionsSelect = OPTIONS_SELECT_PAGINATION_9, callbackSelectedPageNumber, callbackPagination, color = "var(--color-white)" }: IPaginationProps) {
+  const { t } = useTranslation();
   return (
     <div className="flex justify-between">
       <div className="flex gap-3 items-center" style={{ color: color }}>
-        Per Page:
+        {t("Per Page")}:
         <SelectStatic
           placeholder="Select Number of Cards"
           deafultValue={itemsPerPage.toString()}

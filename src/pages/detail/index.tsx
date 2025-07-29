@@ -20,10 +20,12 @@ import Image from "next/image";
 import { useSearchParams } from "next/navigation";
 import { useRouter } from "next/router";
 import PokeEvolution from "@/components/Features/Detail/PokeEvolutionFeatures";
+import { useTranslation } from "react-i18next";
 
 const queryClient = new QueryClient();
 
 function PokemonDetail() {
+  const { t } = useTranslation();
   const searchParams = useSearchParams()
   const idPokemon = searchParams.get('id')
   const getDataCard = useQuery({
@@ -62,19 +64,19 @@ function PokemonDetail() {
                 <Grid container spacing={2}>
                   <Grid size={6}>
                     <div className="flex gap-3">
-                      <p className="text-gray-700 text-xl font-bold">Weight:</p>
+                      <p className="text-gray-700 text-xl font-bold">{t("Weight")}:</p>
                       <p className="text-gray-700 text-xl">{getDataCard?.data?.weight}</p>
                     </div>
                   </Grid>
                   <Grid size={6}>
                     <div className="flex gap-3">
-                      <p className="text-gray-700 text-xl font-bold">Height:</p>
+                      <p className="text-gray-700 text-xl font-bold">{t("Height")}:</p>
                       <p className="text-gray-700 text-xl">{getDataCard?.data?.height}</p>
                     </div>
                   </Grid>
                   <Grid size={12}>
                     <div className="flex gap-8 justify-start">
-                      <p className="text-gray-700 text-xl font-bold">Abilities:</p>
+                      <p className="text-gray-700 text-xl font-bold">{t("Abilities")}:</p>
                       <ul className="text-gray-700 text-xl list-disc">
                         {getDataCard?.data?.abilities?.map((item: any, index: number) => (
                           <li key={index}>
@@ -86,7 +88,7 @@ function PokemonDetail() {
                   </Grid>
                   <Grid size={12}>
                     <div className="flex gap-3">
-                      <p className="text-gray-700 text-xl font-bold">Type:</p>
+                      <p className="text-gray-700 text-xl font-bold">{t("Type")}:</p>
                       <div className="flex justify-center items-center h-full gap-3">
                         {getDataCard?.data?.types?.map((item: any, index: number) => {
                           return (
@@ -119,7 +121,7 @@ function PokemonDetail() {
             </div>
             <div className="flex flex-col gap-2.5">
               <Typography variant="h3" sx={{ fontSize: "1.25rem", fontWeight: 600, color: "var(--color-gray-700)", padding: "1rem 0"}}>
-                Other Images :
+                {t("Other Images")} :
               </Typography>
               <div className="flex gap-6 overflow-x-auto overflow-y-hidden">
                 {[ 'front_default', 'front_shiny', 'back_default', 'back_shiny'].map((item: any, index: number) => (
@@ -207,7 +209,7 @@ function PokemonDetail() {
             </div>
             <div className="flex flex-col gap-2.5">
               <Typography variant="h3" sx={{ fontSize: "1.25rem", fontWeight: 600, color: "var(--color-gray-700)", padding: "1rem 0"}}>
-                Stats :
+                {t("Stats")} :
               </Typography>
               <div className="flex gap-6 overflow-x-auto overflow-y-hidden">
                 {getDataCard?.data?.stats?.map((item: any, index: number) => (
@@ -259,7 +261,7 @@ function PokemonDetail() {
             </div>
             <div className="flex flex-col gap-2.5">
               <Typography variant="h3" sx={{ fontSize: "1.25rem", fontWeight: 600, color: "var(--color-gray-700)", padding: "1rem 0"}}>
-                Evolution :
+                {t("Evolution")} :
               </Typography>
               <div className="flex gap-6 overflow-x-auto overflow-y-hidden justify-center">
                 <PokeEvolution speciesUrl={getDataCard?.data?.species?.url} />

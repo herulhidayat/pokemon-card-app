@@ -11,6 +11,7 @@ import Button from "@mui/material/Button";
 import MenuItem from "@mui/material/MenuItem";
 import Image from "next/image";
 import { useRouter } from "next/router";
+import { useTranslation } from "react-i18next";
 
 const pages = [
   {
@@ -26,6 +27,7 @@ const pages = [
 ];
 
 function Header() {
+  const  { t } = useTranslation();
   const router = useRouter();
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(
     null
@@ -94,7 +96,7 @@ function Header() {
                   onClick={() => handleNavigate(page)}
                   sx={{ display: "block", textTransform: "none", borderRadius: 0, borderBottom: router?.pathname == page?.path ? "1px solid var(--color-primary)" : "none", '&:hover': {borderBottom: "1px solid var(--color-primary)", color: "var(--color-primary)", backgroundColor: "transparent"} }}
                 >
-                  {page?.name}
+                  {t(page?.name)}
                 </Button>
               ))}
             </Box>

@@ -8,10 +8,12 @@ import { useState } from "react";
 import PokeCardItem from "./PokeCardItem";
 import NoData from "@/components/Error/NoData";
 import PaginationComponent from "@/components/Pagination/PaginationComponent";
+import { useTranslation } from "react-i18next";
 
 const queryClient = new QueryClient();
 
 function PokeCardList() {
+  const { t } = useTranslation()
   const [pagination, setPagination] = useState({
     currentPage: 1,
     itemsPerPage: 9,
@@ -47,7 +49,7 @@ function PokeCardList() {
           PokèDex
         </Typography>
         <div className="flex flex-col gap-0 text-center">
-          <p className="text-2xl text-gray-700">All Generation totaling</p>
+          <p className="text-2xl text-gray-700">{t("All Generation totaling")}</p>
           <p className="text-2xl text-gray-700">
             {pagination.count || 0} Pokemon
           </p>

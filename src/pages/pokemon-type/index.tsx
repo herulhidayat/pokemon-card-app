@@ -8,10 +8,12 @@ import api from "@/services/api.service";
 import { Container, Grid, ListItem, ListItemButton, ListItemIcon, ListItemText, Skeleton, Typography } from "@mui/material";
 import { QueryClient, QueryClientProvider, useQuery } from "@tanstack/react-query";
 import { useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
 
 const queryClient = new QueryClient();
 
 function PokemonType() {
+  const { t } = useTranslation();
   const [selectedType, setSelectedType] = useState<{ name: string; url: string}>();
   const [color, setColor] = useState<string>();
 
@@ -48,7 +50,7 @@ function PokemonType() {
           <Grid container spacing={0}>
             <Grid size={{ xs: 12, sm: 2.5}} sx={{ paddingRight: "3.8rem", borderRight: "1px solid var(--color-gray-200)"}}>
               <div className="flex flex-col gap-1">
-                <Typography variant="h3" sx={{ fontSize: "1rem", fontWeight: 600, color: "var(--color-gray-700)" }}>Pokemon Type</Typography>
+                <Typography variant="h3" sx={{ fontSize: "1rem", fontWeight: 600, color: "var(--color-gray-700)" }}>{t("Pokemon Type")}</Typography>
                 <div>
                   {getAllCard?.isLoading && Array.from({ length: 5 })?.map((item: any, index: number) => (
                     <ListItem key={index} component="div" disablePadding onClick={() => setSelectedType(item)}>
@@ -78,8 +80,8 @@ function PokemonType() {
             <Grid size={{ xs: 12, sm: 9.5}} sx={{ paddingLeft: "3.8rem" }}>
               {selectedType && (
                 <div className="flex flex-col gap-1">
-                  <Typography variant="h3" sx={{ fontSize: "2.66rem", fontWeight: 600, color: "var(--color-gray-700)" }}>Pokemon with <span className="capitalize">{selectedType?.name}</span></Typography>
-                  <div style={{minHeight: "107.376666667rem"}}>
+                  <Typography variant="h3" sx={{ fontSize: "2.66rem", fontWeight: 600, color: "var(--color-gray-700)" }}>{t("Pokemon with")} <span className="capitalize">{selectedType?.name}</span></Typography>
+                  <div className="mt-3" style={{minHeight: "107.376666667rem"}}>
                     <PokeTypeListFeature type={selectedType} color={color} />
                   </div>
                 </div>
