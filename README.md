@@ -1,4 +1,4 @@
-# 🚀 Next.js App Deployment (Netlify)
+# 🚀 Pokemon Card App
 
 This project is a [Pokemon Card App](https://pokemon-card-apps.netlify.app/) web application deployed using **[Netlify](https://www.netlify.com/)**. This README includes deployment steps, configuration, and common issues encountered (especially 500 errors).
 
