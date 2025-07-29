@@ -5,6 +5,7 @@ import SelectStatic from "../Form/SelectStatic";
 import GlobeIcon from "../Icons/GlobeIcon";
 import DropDownIcon from "../Icons/DropDownIcon";
 import { useTranslation } from "react-i18next";
+import { useEffect } from "react";
 
 export default function Translation() {
     const { i18n } = useTranslation();
@@ -16,6 +17,13 @@ export default function Translation() {
         { key: 'English', value: 'en' },
         { key: 'Indonesia', value: 'id' },
     ]
+
+    useEffect(() => {
+        if(!Boolean(i18n.language)) {
+            i18n.changeLanguage('en')
+        }
+    }, [i18n.language])
+    
     return (
         <>
             <div className="w-full bg-gray-200 h-[2.133rem] flex items-center">
