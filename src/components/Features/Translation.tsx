@@ -19,11 +19,9 @@ export default function Translation() {
     ]
 
     useEffect(() => {
-        if(!Boolean(i18n.language)) {
-            i18n.changeLanguage('en')
-        }
-    }, [i18n.language])
-    
+        i18n.changeLanguage('en')
+    }, [])
+
     return (
         <>
             <div className="w-full bg-gray-200 h-[2.133rem] flex items-center">
