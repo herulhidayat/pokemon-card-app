@@ -1,5 +1,3 @@
-"use client";
-
 import { Container } from "@mui/material";
 import HeroFeature from "@/components/Features/Home/HeroFeature";
 import PokeCardListFeature from "@/components/Features/Home/PokeCardListFeature";
