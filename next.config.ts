@@ -12,11 +12,8 @@ const nextConfig: NextConfig = {
   images: {
     remotePatterns: [new URL('https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/**')],
   },
-};
-
-module.exports = {
   distDir: 'build',
-}
+};
 
 export default nextConfig;
 
