@@ -14,7 +14,7 @@ export default function HeroFeature() {
             marginBottom: "1rem",
           }}
         >
-          All the Pokémon data you'll ever need in one place!
+          {'All the Pokémon data you\'ll ever need in one place!'}
         </Typography>
         <Typography
           variant="h3"

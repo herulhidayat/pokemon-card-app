@@ -4,7 +4,6 @@ import api from "@/services/api.service";
 import { Divider, Grid, Skeleton } from "@mui/material";
 import { useQuery } from "@tanstack/react-query";
 import Image from "next/image";
-import { useRef } from "react";
 
 interface IPokeTypeItemProps {
   data: any;

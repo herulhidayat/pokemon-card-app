@@ -26,7 +26,6 @@ const queryClient = new QueryClient();
 function PokemonDetail() {
   const searchParams = useSearchParams()
   const idPokemon = searchParams.get('id')
-  const router = useRouter();
   const getDataCard = useQuery({
     queryKey: [idPokemon],
     queryFn: async () => {

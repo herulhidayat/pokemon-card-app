@@ -32,8 +32,8 @@ export default function PokeEvolution({ speciesUrl }: any) {
   return (
     <>
       {evolution && evolution?.map((item: any, index: number) => (
-        <div className="flex flex-row gap-6 justify-center items-start">
-          <div className="flex flex-col gap-3 cursor-pointer" key={index} onClick={() => router.push(`/detail?id=${item?.name}`)}>
+        <div key={index} className="flex flex-row gap-6 justify-center items-start">
+          <div className="flex flex-col gap-3 cursor-pointer" onClick={() => router.push(`/detail?id=${item?.name}`)}>
             <div className="w-[200px] h-[200px] rounded-full border-8 flex justify-center items-center" style={{borderColor: colorEvo[index]}}>
               <PokeEvolutionImage name={item?.name} />
             </div>

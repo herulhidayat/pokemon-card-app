@@ -14,6 +14,10 @@ const nextConfig: NextConfig = {
   },
 };
 
+module.exports = {
+  distDir: 'build',
+}
+
 export default nextConfig;
 
 import { initOpenNextCloudflareForDev } from "@opennextjs/cloudflare";

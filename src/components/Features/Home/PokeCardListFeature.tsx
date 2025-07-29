@@ -1,9 +1,8 @@
 "use client"
 
-import SelectStatic from "@/components/Form/SelectStatic";
 import { API_PATH } from "@/services/_path.service";
 import api from "@/services/api.service";
-import { Grid, Pagination, Skeleton, Typography } from "@mui/material";
+import { Grid, Skeleton, Typography } from "@mui/material";
 import { QueryClient, QueryClientProvider, useQuery } from "@tanstack/react-query";
 import { useState } from "react";
 import PokeCardItem from "./PokeCardItem";
