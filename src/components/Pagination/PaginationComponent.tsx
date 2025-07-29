@@ -14,7 +14,7 @@ interface IPaginationProps {
 export default function PaginationComponent({ itemsPerPage, totalData, oprionsSelect = OPTIONS_SELECT_PAGINATION_9, callbackSelectedPageNumber, callbackPagination, color = "var(--color-white)" }: IPaginationProps) {
   const { t } = useTranslation();
   return (
-    <div className="flex justify-between">
+    <div className="flex md:justify-between items-center md:flex-row flex-col gap-3">
       <div className="flex gap-3 items-center" style={{ color: color }}>
         {t("Per Page")}:
         <SelectStatic
