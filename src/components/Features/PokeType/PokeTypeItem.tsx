@@ -4,12 +4,14 @@ import api from "@/services/api.service";
 import { Divider, Grid, Skeleton } from "@mui/material";
 import { useQuery } from "@tanstack/react-query";
 import Image from "next/image";
+import { useRouter } from "next/router";
 
 interface IPokeTypeItemProps {
   data: any;
 }
 
 export default function PokeTypeItem({ data }: IPokeTypeItemProps) {
+  const router = useRouter();
   const getDataPokemon = useQuery({
     queryKey: [data?.pokemon?.url],
     queryFn: async () => {
@@ -47,7 +49,7 @@ export default function PokeTypeItem({ data }: IPokeTypeItemProps) {
         </Grid>
       )}
       {getDataPokemon?.data && (
-        <Grid container spacing={2}>
+        <Grid container spacing={2} sx={{ ":hover": { transform: "scale(1.02)" }, transition: "all 0.5s", cursor: "pointer" }} onClick={() => router.push(`/detail?id=${getDataPokemon?.data?.name}`)}>
           <Grid size={2}>
             <div className="rounded-xl flex justify-center items-center" style={{backgroundColor: typeColorReferences.find((item: any) => item.name === getDataPokemon?.data?.types[0]?.type?.name)?.color, width: 120, height: 120}}>
               <Image
