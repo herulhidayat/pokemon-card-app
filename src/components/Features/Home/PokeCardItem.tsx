@@ -79,7 +79,7 @@ export default function PokeCardItem({ data }: IPokeCardItemProps) {
             >
               <div>
                 <Image
-                  src={getDataCard?.data?.sprites?.front_default}
+                  src={getDataCard?.data?.sprites?.other?.['official-artwork']?.front_default}
                   width={200}
                   height={200}
                   alt=""
@@ -151,7 +151,7 @@ export default function PokeCardItem({ data }: IPokeCardItemProps) {
           </div>
           <div className="rounded-xl flex justify-center items-center md:w-[400px] md:h-[400px] w-auto h-auto" style={{backgroundColor: typeColorReferences.find((item: any) => item.name === getDataCard?.data?.types[0]?.type?.name)?.color}}>
             <Image
-              src={getDataCard?.data?.sprites?.front_default}
+              src={getDataCard?.data?.sprites?.other?.['official-artwork']?.front_default}
               width={400}
               height={400}
               alt={getDataCard?.data?.types[0]?.type?.name || ""}

@@ -17,7 +17,7 @@ export default function PokeEvolutionImage({ name }: { name: string }) {
     return (
         <>
             {getDataCard?.data?.sprites?.front_default && (
-                <Image src={getDataCard?.data?.sprites?.front_default} alt={name} width={200} height={200} />
+                <Image src={getDataCard?.data?.sprites?.other?.['official-artwork']?.front_default} alt={name} width={100} height={100} />
             )}
         </>
     )

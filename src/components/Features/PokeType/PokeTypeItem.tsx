@@ -53,7 +53,7 @@ export default function PokeTypeItem({ data }: IPokeTypeItemProps) {
           <Grid size={2}>
             <div className="rounded-xl flex justify-center items-center" style={{backgroundColor: typeColorReferences.find((item: any) => item.name === getDataPokemon?.data?.types[0]?.type?.name)?.color, width: 120, height: 120}}>
               <Image
-                src={getDataPokemon?.data?.sprites?.front_default}
+                src={getDataPokemon?.data?.sprites?.other?.['official-artwork']?.front_default}
                 width={100}
                 height={100}
                 alt={getDataPokemon?.data?.types[0]?.type?.name || ""}
