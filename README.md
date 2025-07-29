@@ -1,9 +1,6 @@
 # 🚀 Pokemon Card App
 
-This project is a [Pokemon Card App](https://pokemon-card-apps.netlify.app/) web application deployed using **[Netlify](https://www.netlify.com/)**. This README includes deployment steps, configuration, and common issues encountered (especially 500 errors).
-
-[ISSUE] : Got error 500 when first opened and refreshed, the cause is probably Netlify which doesn't support NextJS yet.
-
+This project is a [Pokemon Card App] ([https://pokemon-card-app-two.vercel.app/](https://pokemon-card-app-two.vercel.app/)) web application deployed using **[Vercel](https://vercel.com/)**.
 ---
 
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/pages/api-reference/create-next-app).
