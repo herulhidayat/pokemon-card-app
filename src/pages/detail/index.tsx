@@ -45,11 +45,11 @@ function PokemonDetail() {
 
   return (
     <>
-      <section className="my-20 relative">
+      <section className="md:my-20 relative">
         <Container>
           <div className="flex flex-col gap-10">
-            <div className="flex gap-5">
-              <div className="rounded-xl flex justify-center items-center" style={{backgroundColor: typeColorReferences.find((item: any) => item.name === getDataCard?.data?.types[0]?.type?.name)?.color, width: 400, height: 400}}>
+            <div className="flex md:flex-row flex-col gap-5">
+              <div className="rounded-xl flex justify-center items-center md:w-[400px] w-auto md:h-[400px] h-auto" style={{backgroundColor: typeColorReferences.find((item: any) => item.name === getDataCard?.data?.types[0]?.type?.name)?.color }}>
                 <Image
                   src={getDataCard?.data?.sprites?.front_default}
                   width={400}
@@ -62,13 +62,13 @@ function PokemonDetail() {
                   {getDataCard?.data?.name}
                 </Typography>
                 <Grid container spacing={2}>
-                  <Grid size={6}>
+                  <Grid size={{ xs: 12, md: 6 }}>
                     <div className="flex gap-3">
                       <p className="text-gray-700 text-xl font-bold">{t("Weight")}:</p>
                       <p className="text-gray-700 text-xl">{getDataCard?.data?.weight}</p>
                     </div>
                   </Grid>
-                  <Grid size={6}>
+                  <Grid size={{ xs: 12, md: 6 }}>
                     <div className="flex gap-3">
                       <p className="text-gray-700 text-xl font-bold">{t("Height")}:</p>
                       <p className="text-gray-700 text-xl">{getDataCard?.data?.height}</p>
@@ -211,7 +211,7 @@ function PokemonDetail() {
               <Typography variant="h3" sx={{ fontSize: "1.25rem", fontWeight: 600, color: "var(--color-gray-700)", padding: "1rem 0"}}>
                 {t("Stats")} :
               </Typography>
-              <div className="flex gap-6 overflow-x-auto overflow-y-hidden">
+              <div className="flex flex-col md:flex-row justify-center items-center gap-6 overflow-x-auto overflow-y-hidden">
                 {getDataCard?.data?.stats?.map((item: any, index: number) => (
                   <Box
                     position="relative"
@@ -263,7 +263,7 @@ function PokemonDetail() {
               <Typography variant="h3" sx={{ fontSize: "1.25rem", fontWeight: 600, color: "var(--color-gray-700)", padding: "1rem 0"}}>
                 {t("Evolution")} :
               </Typography>
-              <div className="flex gap-6 overflow-x-auto overflow-y-hidden justify-center">
+              <div className="flex flex-col md:flex-row gap-6 overflow-x-auto overflow-y-hidden justify-center">
                 <PokeEvolution speciesUrl={getDataCard?.data?.species?.url} />
               </div>
             </div>

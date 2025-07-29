@@ -1,5 +1,5 @@
 import api from "@/services/api.service";
-import { ArrowForward } from "@mui/icons-material";
+import { ArrowDownward, ArrowForward } from "@mui/icons-material";
 import { useQuery } from "@tanstack/react-query";
 import { useRouter } from "next/router";
 import { useState } from "react";
@@ -34,7 +34,7 @@ export default function PokeEvolution({ speciesUrl }: any) {
   return (
     <>
       {evolution && evolution?.map((item: any, index: number) => (
-        <div key={index} className="flex flex-row gap-6 justify-center items-start">
+        <div key={index} className="flex md:flex-row flex-col gap-6 justify-center md:items-start items-center">
           <div className="flex flex-col gap-3 cursor-pointer" onClick={() => router.push(`/detail?id=${item?.name}`)}>
             <div className="w-[200px] h-[200px] rounded-full border-8 flex justify-center items-center" style={{borderColor: colorEvo[index]}}>
               <PokeEvolutionImage name={item?.name} />
@@ -48,9 +48,14 @@ export default function PokeEvolution({ speciesUrl }: any) {
               </p>
             </div>
           </div>
-          <div className="mt-17">
+          <div className="md:mt-17 md:visible hidden">
             {index < evolution?.length - 1 && (
               <ArrowForward sx={{ fontSize: "4rem", color: "var(--color-gray-700)"}}/>
+            )}
+          </div>
+          <div className="md:hidden">
+            {index < evolution?.length - 1 && (
+              <ArrowDownward sx={{ fontSize: "4rem", color: "var(--color-gray-700)"}}/>
             )}
           </div>
         </div>

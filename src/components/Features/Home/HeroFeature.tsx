@@ -7,12 +7,19 @@ import { useTranslation } from "react-i18next";
 export default function HeroFeature() {
   const { t } = useTranslation()
   return (
-    <div className="flex h-full">
-      <div className="w-1/2 flex flex-col justify-center">
+    <div className="flex flex-col-reverse md:flex-row h-auto md:h-full">
+      <div className="md:w-1/2 flex flex-col justify-center">
         <Typography
           variant="h1"
           sx={{
-            fontSize: "3.466rem",
+            fontSize: {
+              xs: "1.333rem",
+              md: "3.466rem",
+            },
+            textAlign: {
+              xs: "center",
+              md: "left",
+            },
             fontWeight: 600,
             color: "var(--color-gray-700)",
             marginBottom: "1rem",
@@ -23,7 +30,14 @@ export default function HeroFeature() {
         <Typography
           variant="h3"
           sx={{
-            fontSize: "1.33rem",
+            fontSize: {
+              xs: "0.933rem",
+              md: "1.333rem",
+            },
+            textAlign: {
+              xs: "center",
+              md: "left",
+            },
             fontWeight: 400,
             color: "var(--color-gray-500)",
             marginBottom: "2.133rem",
@@ -31,7 +45,7 @@ export default function HeroFeature() {
         >
           {t("Thousands of data compiled into one place")}
         </Typography>
-        <div>
+        <div className="flex md:justify-start justify-center">
           <Button
             variant="contained"
             color="primary"
@@ -63,7 +77,7 @@ export default function HeroFeature() {
           </Button>
         </div>
       </div>
-      <div className="w-1/2 flex justify-center items-center">
+      <div className="md:w-1/2 flex justify-center items-center p-10 md:p-0">
         <Image
           src="/assets/home-img.png"
           alt="Hero Image"

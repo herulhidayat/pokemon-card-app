@@ -58,41 +58,43 @@ function PokeTypeList({ type, color }: any) {
   }, [pagination?.currentPage, pagination?.itemsPerPage, getAllType?.data]);
 
   return (
-    <div className="backdrop-blur-2xl shadow-2xl rounded-2xl p-5">
-      <Grid container spacing={2}>
-        {getAllType?.isLoading && Array.from({ length: pagination.itemsPerPage }, (_, index) => (
-          <Grid size={12} key={index}>
-            <Skeleton variant="rounded" width={"100%"} height={140} />
-          </Grid>
-        ))}
-        {(getAllType?.isError || !Boolean(getAllType?.data?.pokemon?.length)) && (
-          <Grid size={12}>
-            <NoData text="We couldn't find any Pokè data"/>
-          </Grid>
-        )}
-        {renderList}
-        <Grid size={12}>
-          {Boolean(pagination?.count) && (
-            <PaginationComponent
-              totalData={pagination.count}
-              itemsPerPage={pagination.itemsPerPage}
-              oprionsSelect={OPTIONS_SELECT_PAGINATION_10}
-              callbackPagination={(page) =>
-                setPagination((prev) => ({ ...prev, currentPage: page }))
-              }
-              callbackSelectedPageNumber={(value) =>
-                setPagination((prev) => ({
-                  ...prev,
-                  itemsPerPage: parseInt(value?.value),
-                  currentPage: 1,
-                  count: 0,
-                }))
-              }
-              color={color}
-            />
+    <div className="overflow-x-auto shadow-2xl backdrop-blur-2xl rounded-2xl">
+      <div className="p-5 md:w-auto w-[1000]">
+        <Grid container spacing={2}>
+          {getAllType?.isLoading && Array.from({ length: pagination.itemsPerPage }, (_, index) => (
+            <Grid size={12} key={index}>
+              <Skeleton variant="rounded" width={"100%"} height={140} />
+            </Grid>
+          ))}
+          {(getAllType?.isError || !Boolean(getAllType?.data?.pokemon?.length)) && (
+            <Grid size={12}>
+              <NoData text="We couldn't find any Pokè data"/>
+            </Grid>
           )}
+          {renderList}
+          <Grid size={12}>
+            {Boolean(pagination?.count) && (
+              <PaginationComponent
+                totalData={pagination.count}
+                itemsPerPage={pagination.itemsPerPage}
+                oprionsSelect={OPTIONS_SELECT_PAGINATION_10}
+                callbackPagination={(page) =>
+                  setPagination((prev) => ({ ...prev, currentPage: page }))
+                }
+                callbackSelectedPageNumber={(value) =>
+                  setPagination((prev) => ({
+                    ...prev,
+                    itemsPerPage: parseInt(value?.value),
+                    currentPage: 1,
+                    count: 0,
+                  }))
+                }
+                color={color}
+              />
+            )}
+          </Grid>
         </Grid>
-      </Grid>
+      </div>
     </div>
   );
 }

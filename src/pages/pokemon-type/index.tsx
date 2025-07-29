@@ -39,7 +39,7 @@ function PokemonType() {
 
   return (
     <>
-      <section className="my-20 relative">
+      <section className="md:my-20 relative">
         {color && (
           <>
             <div className="absolute h-[560px] w-[280px] right-0 top-0 rounded-s-full border-[150px] border-e-0" style={{borderColor: color}}></div>
@@ -48,10 +48,10 @@ function PokemonType() {
         )}
         <Container>
           <Grid container spacing={0}>
-            <Grid size={{ xs: 12, sm: 2.5}} sx={{ paddingRight: "3.8rem", borderRight: "1px solid var(--color-gray-200)"}}>
+            <Grid size={{ xs: 12, md: 2.5}} sx={{ paddingRight: { xs: 0, md: "3.8rem"}, borderRight: "1px solid var(--color-gray-200)"}}>
               <div className="flex flex-col gap-1">
                 <Typography variant="h3" sx={{ fontSize: "1rem", fontWeight: 600, color: "var(--color-gray-700)" }}>{t("Pokemon Type")}</Typography>
-                <div>
+                <div className="flex flex-col md:h-full h-[200px] overflow-y-auto">
                   {getAllCard?.isLoading && Array.from({ length: 5 })?.map((item: any, index: number) => (
                     <ListItem key={index} component="div" disablePadding onClick={() => setSelectedType(item)}>
                       <ListItemButton style={{ padding: "0", backgroundColor: item?.name === selectedType?.name ? lightenHexColor(color as string, 50) : "" }}>
@@ -77,10 +77,10 @@ function PokemonType() {
                 </div>
               </div>
             </Grid>
-            <Grid size={{ xs: 12, sm: 9.5}} sx={{ paddingLeft: "3.8rem" }}>
+            <Grid size={{ xs: 12, md: 9.5}} sx={{ paddingLeft: { xs: 0, md: "3.8rem"} }}>
               {selectedType && (
-                <div className="flex flex-col gap-1">
-                  <Typography variant="h3" sx={{ fontSize: "2.66rem", fontWeight: 600, color: "var(--color-gray-700)" }}>{t("Pokemon with")} <span className="capitalize">{selectedType?.name}</span></Typography>
+                <div className="flex flex-col gap-1 relative">
+                  <Typography variant="h3" sx={{ fontSize: "2.66rem", textAlign: { xs: "center", md: "left"}, fontWeight: 600, color: "var(--color-gray-700)" }}>{t("Pokemon with")} <span className="capitalize">{selectedType?.name}</span></Typography>
                   <div className="mt-3" style={{minHeight: "107.376666667rem"}}>
                     <PokeTypeListFeature type={selectedType} color={color} />
                   </div>

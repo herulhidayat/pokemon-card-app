@@ -47,7 +47,7 @@ export default function PokeCardItem({ data }: IPokeCardItemProps) {
 
   return (
     <>
-      <div className="[perspective:1500px]">
+      <div className="[perspective:1500px] flex items-center justify-center">
         {getDataCard?.isLoading || !data?.url && (
           <Skeleton variant="rounded" width={350} height={500} />
         )}
@@ -140,10 +140,16 @@ export default function PokeCardItem({ data }: IPokeCardItemProps) {
           boxShadow: 24,
           p: 4,
           display: "flex",
-          flexDirection: "row",
+          flexDirection: {
+            xs: "column",
+            md: "row"
+          },
           gap: 3
         }}>
-          <div className="rounded-xl flex justify-center items-center" style={{backgroundColor: typeColorReferences.find((item: any) => item.name === getDataCard?.data?.types[0]?.type?.name)?.color, width: 400, height: 400}}>
+          <div className="cursor-pointer md:hidden flex justify-end" onClick={() => setModal(false)}>
+            <Close />
+          </div>
+          <div className="rounded-xl flex justify-center items-center md:w-[400px] md:h-[400px] w-auto h-auto" style={{backgroundColor: typeColorReferences.find((item: any) => item.name === getDataCard?.data?.types[0]?.type?.name)?.color}}>
             <Image
               src={getDataCard?.data?.sprites?.front_default}
               width={400}
@@ -152,23 +158,23 @@ export default function PokeCardItem({ data }: IPokeCardItemProps) {
             />
           </div>
           <div className="flex flex-col justify-between">
-            <div className="flex flex-col min-w-sm gap-6">
+            <div className="flex flex-col md:min-w-sm min-w-80 gap-6">
               <div className="flex justify-between">
                 <Typography variant="h2" sx={{ fontSize: "2.66rem", fontWeight: 600, color: "var(--color-gray-700)", textTransform: "capitalize" }}>
                   {getDataCard?.data?.name}
                 </Typography>
-                <div className="cursor-pointer" onClick={() => setModal(false)}>
+                <div className="cursor-pointer md:visible invisible" onClick={() => setModal(false)}>
                   <Close />
                 </div>
               </div>
               <Grid container spacing={2} sx={{ maxWidth: "400px"}}>
-                <Grid size={6}>
+                <Grid size={{ xs: 12, md: 6 }}>
                   <div className="flex gap-3">
                     <p className="text-gray-700 text-xl font-bold">{t("Weight")}:</p>
                     <p className="text-gray-700 text-xl">{getDataCard?.data?.weight}</p>
                   </div>
                 </Grid>
-                <Grid size={6}>
+                <Grid size={{ xs: 12, md: 6 }}>
                   <div className="flex gap-3">
                     <p className="text-gray-700 text-xl font-bold">{t("Height")}:</p>
                     <p className="text-gray-700 text-xl">{getDataCard?.data?.height}</p>
@@ -236,6 +242,7 @@ export default function PokeCardItem({ data }: IPokeCardItemProps) {
                   fontWeight: 600,
                   py: "0.2rem",
                   paddingX: "1.133rem",
+                  marginTop: "2rem",
                 }}
                 onClick={() => {
                   router.push({
