@@ -6,12 +6,7 @@
     "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint",
-    "preview": "opennextjs-cloudflare build && opennextjs-cloudflare preview",
-    "deploy": "opennextjs-cloudflare build && opennextjs-cloudflare deploy",
-    "upload": "opennextjs-cloudflare build && opennextjs-cloudflare upload",
-    "cf-typegen": "wrangler types --env-interface CloudflareEnv cloudflare-env.d.ts"
-    
+    "lint": "next lint"
   },
   "dependencies": {
     "@emotion/cache": "^11.14.0",
@@ -22,7 +17,6 @@
     "@mui/material": "^7.2.0",
     "@mui/material-nextjs": "^7.2.0",
     "@mui/x-charts": "^8.9.0",
-    "@opennextjs/cloudflare": "^1.6.1",
     "@tanstack/react-query": "^5.83.0",
     "@tanstack/react-table": "^8.21.3",
     "axios": "^1.11.0",
@@ -44,7 +38,6 @@
     "eslint": "^9",
     "eslint-config-next": "15.4.4",
     "tailwindcss": "^4",
-    "typescript": "^5",
-    "wrangler": "^4.26.0"
+    "typescript": "^5"
   }
 }
